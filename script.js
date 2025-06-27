@@ -135,6 +135,7 @@ function addParticipantBlock(animate = false) {
     roleButtonsDiv.querySelector('.support').addEventListener('click', (event) => showChoices('support', resultDisplayDiv, newParticipantBlock, event));
     roleButtonsDiv.querySelector('.openQueue').addEventListener('click', (event) => showChoices('openQueue', resultDisplayDiv, newParticipantBlock, event));
     newParticipantBlock.style.pointerEvents = 'auto';
+    trapFocus();
 }
 function removeParticipantBlock(block) {
     const firstStates = new Map();
@@ -639,7 +640,7 @@ function resetAllBans(excludedHeroesList) {
 }
 function initializeModalButtons() {
     const modal = document.getElementById('excludeModal');
-    if (modal) { 
+    if (modal) {
         modal.querySelector('.modal-close-btn').addEventListener('click', () => {
             modal.classList.remove('visible');
         });
@@ -675,6 +676,26 @@ function playBoopSound() {
             console.error("Erreur lors de la lecture du son de Sombra :", e);
         });
     }
+}
+function trapFocus() {
+    document.addEventListener('keydown', (e) => {
+        const focusableElements = Array.from(document.querySelectorAll('input[type="text"]'));
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+        if (e.key === 'Tab') {
+            if (e.shiftKey) {
+                if (document.activeElement === firstElement) {
+                    e.preventDefault();
+                    lastElement.focus();
+                }
+            } else {
+                if (document.activeElement === lastElement) {
+                    e.preventDefault();
+                    firstElement.focus();
+                }
+            }
+        }
+    });
 }
 window.onload = function() {
     preLoadImages();
@@ -733,4 +754,8 @@ window.onload = function() {
             contextMenu.style.display = 'none';
         }
     });
+    document.addEventListener('contextmenu', (event) => {
+        event.preventDefault();
+    });
+    trapFocus();
 };

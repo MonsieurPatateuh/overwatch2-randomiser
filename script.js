@@ -135,7 +135,6 @@ function addParticipantBlock(animate = false) {
     roleButtonsDiv.querySelector('.support').addEventListener('click', (event) => showChoices('support', resultDisplayDiv, newParticipantBlock, event));
     roleButtonsDiv.querySelector('.openQueue').addEventListener('click', (event) => showChoices('openQueue', resultDisplayDiv, newParticipantBlock, event));
     newParticipantBlock.style.pointerEvents = 'auto';
-    trapFocus();
 }
 function removeParticipantBlock(block) {
     const firstStates = new Map();
@@ -680,18 +679,20 @@ function playBoopSound() {
 function trapFocus() {
     document.addEventListener('keydown', (e) => {
         const focusableElements = Array.from(document.querySelectorAll('input[type="text"]'));
-        const firstElement = focusableElements[0];
-        const lastElement = focusableElements[focusableElements.length - 1];
-        if (e.key === 'Tab') {
-            if (e.shiftKey) {
-                if (document.activeElement === firstElement) {
-                    e.preventDefault();
-                    lastElement.focus();
-                }
-            } else {
-                if (document.activeElement === lastElement) {
-                    e.preventDefault();
-                    firstElement.focus();
+        if (focusableElements.length > 0) {
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+            if (e.key === 'Tab') {
+                if (e.shiftKey) {
+                    if (document.activeElement === firstElement) {
+                        e.preventDefault();
+                        lastElement.focus();
+                    }
+                } else {
+                    if (document.activeElement === lastElement) {
+                        e.preventDefault();
+                        firstElement.focus();
+                    }
                 }
             }
         }
@@ -755,7 +756,10 @@ window.onload = function() {
         }
     });
     document.addEventListener('contextmenu', (event) => {
-        event.preventDefault();
+        const isParticipantTile = event.target.closest('.participant-block:not(.add-block)');
+        if (!isParticipantTile) {
+            event.preventDefault();
+        }
     });
     trapFocus();
 };

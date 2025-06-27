@@ -739,3 +739,23 @@ button:hover {
     cursor: default;
     transform: scale(1.1);
 }
+
+.header-logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    margin: 0;
+    display: block;
+    z-index: 1000;
+}
+
+.header-logo img {
+    width: 60px;
+    height: 60px;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.header-logo img:hover {
+    opacity: 0.6;
+}

@@ -667,9 +667,14 @@ function initializeModalButtons() {
     }
 }
 function playBoopSound() {
-    const audio = new Audio('src/boop.ogg');
-    audio.volume = 0.4;
-    audio.play().catch(e => console.error("Erreur de lecture du son :", e));
+    const audio = document.getElementById('sombra-boop-audio');
+    if (audio) {
+        audio.currentTime = 0;
+        audio.volume = 0.4;
+        audio.play().catch(e => {
+            console.error("Erreur lors de la lecture du son de Sombra :", e);
+        });
+    }
 }
 window.onload = function() {
     preLoadImages();

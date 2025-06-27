@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overwatch 2 Buttons</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.cdnfonts.com/css/big-noodle-titling" rel="stylesheet">
+
+    <style>
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+            color: #fff;
+            font-size: 14px;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="participants-container" id="participantsContainer">
+            </div>
+    </div>
+
+    <div id="custom-alert" class="custom-alert">
+        <span class="alert-message"></span>
+    </div>
+
+    <div id="contextMenu" class="context-menu"></div>
+
+    <div id="excludeModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Exclure des héros</h3>
+                <button class="modal-close-btn">&times;</button>
+            </div>
+            <div class="modal-global-controls">
+                <button id="resetAllBansBtn" class="reset-all-btn">Réinitialiser tous les bannissements</button>
+            </div>
+            <div class="modal-roles-container">
+                <div class="modal-role-section" data-role="tank">
+                    <h4>Tank</h4>
+                    <div class="role-controls">
+                        <button class="ban-all-btn" data-role-type="tank">Bannir tout sauf 2</button>
+                        <button class="reset-role-btn" data-role-type="tank">Réinitialiser ce rôle</button>
+                    </div>
+                    <div class="modal-hero-list" id="tank-hero-list"></div>
+                </div>
+                <div class="modal-role-section" data-role="damage">
+                    <h4>Damage</h4>
+                    <div class="role-controls">
+                        <button class="ban-all-btn" data-role-type="damage">Bannir tout sauf 2</button>
+                        <button class="reset-role-btn" data-role-type="damage">Réinitialiser ce rôle</button>
+                    </div>
+                    <div class="modal-hero-list" id="damage-hero-list"></div>
+                </div>
+                <div class="modal-role-section" data-role="support">
+                    <h4>Support</h4>
+                    <div class="role-controls">
+                        <button class="ban-all-btn" data-role-type="support">Bannir tout sauf 2</button>
+                        <button class="reset-role-btn" data-role-type="support">Réinitialiser ce rôle</button>
+                    </div>
+                    <div class="modal-hero-list" id="support-hero-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="sombra-audio" src="src/sombra.mp3" preload="auto"></audio>
+    <audio id="credits-audio" src="src/audio.mp3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+
+    <footer>
+        <p>© <a href="#" id="credits-link" tabindex="-1">Patateuh - 2025</a></p>
+    </footer>
+
+</body>
+</html>

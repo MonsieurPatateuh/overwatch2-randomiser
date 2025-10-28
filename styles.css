@@ -759,3 +759,85 @@ button:hover {
 .header-logo img:hover {
     opacity: 1.6;
 }
+.tutorial-tab {
+  position: fixed;
+  bottom: 20px;
+  right: 25px;
+  z-index: 10000;
+}
+
+.tab-label {
+  background: #ffa500;
+  color: #212121;
+  border-radius: 12px;
+  padding: 8px 20px;
+  font-weight: 700;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1.07em;
+  box-shadow: 0 1px 5px rgba(0,0,0,.10);
+  cursor: pointer;
+  user-select: none;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity .25s;
+  display: block;
+  width: auto;
+  height: auto;
+  line-height: 24px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.tab-content {
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  margin-bottom: 15px;
+  width: 270px;
+  min-height: 140px;
+  background: #222;
+  color: #ffa500;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+  opacity: 0;
+  pointer-events: none;
+  padding: 18px 20px 18px 24px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.97em;
+  transform: none;
+  transition: opacity .25s;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tutorial-tab:hover .tab-label {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tutorial-tab:hover .tab-content {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.tab-content h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.05em;
+  color: #ffa500;
+  font-weight: 700;
+}
+.tab-content ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #ecd08c;
+  font-size: 1em;
+}
+.tab-content ul li {
+  margin-bottom: 10px;
+}
+.tab-content ul li:last-child {
+  margin-bottom: 0;
+}
